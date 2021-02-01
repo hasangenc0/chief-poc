@@ -1,0 +1,46 @@
+{
+  "name": "event-driven-web-workers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "publish": "lerna publish",
+    "build": "lerna run build",
+    "dev": "web-dev-server --open static",
+    "format": "prettier --write 'src/**/*.{ts,tsx,css}' *.{js,json,md} && npm run lint:fix",
+    "lint": "tslint -t verbose -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint:fix": "tslint -t verbose -c tslint.json --fix 'src/**/*.{ts,tsx}'",
+    "lint:staged": "pretty-quick --staged && lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "npm run format"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.5",
+    "husky": "^4.3.6",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.5.3",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
+    "rollup": "^2.35.1",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.1.3"
+  },
+  "author": "",
+  "license": "ISC"
+}
